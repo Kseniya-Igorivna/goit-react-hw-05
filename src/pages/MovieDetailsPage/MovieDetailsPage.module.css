@@ -1,10 +1,14 @@
 .container {
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .poster {
   width: 300px;
   border-radius: 10px;
+  margin-top: 20px;
 }
 
 h1 {
@@ -18,4 +22,36 @@ p {
 
 a {
   margin-right: 20px;
+}
+
+.buttonContainer {
+  margin-bottom: 10px;
+}
+
+.goBackButton {
+  padding: 10px 20px;
+  background-color: #da47ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.goBackButton:hover {
+  background-color: #8717ad;
+}
+
+.linksContainer {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  text-decoration: underline;
+  color: #da47ff;
+}
+
+.link:hover {
+  color: #8717ad;
 }
