@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, Outlet } from "react-router-dom";
-import { fetchMovieDetails } from "../../services/api";
+import { fetchMovieDetails } from "../../Api";
 import styles from "./MovieDetailsPage.module.css";
 
 export default function MovieDetailsPage() {
@@ -22,8 +22,12 @@ export default function MovieDetailsPage() {
           />
           <h1>{movie.title}</h1>
           <p>{movie.overview}</p>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
+          <Link to="cast" className={styles.link}>
+            Cast
+          </Link>
+          <Link to="reviews" className={styles.link}>
+            Reviews
+          </Link>
           <Outlet />
         </>
       )}

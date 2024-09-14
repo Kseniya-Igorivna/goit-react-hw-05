@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchMovieReviews } from "../../services/api";
+import { fetchMovieReviews } from "../../Api";
 import styles from "./MovieReviews.module.css";
 
 export default function MovieReviews() {
@@ -13,7 +13,7 @@ export default function MovieReviews() {
 
   return (
     <div>
-      {reviews.length ? (
+      {reviews.length > 0 ? (
         <ul className={styles.reviewList}>
           {reviews.map(review => (
             <li key={review.id}>
@@ -23,7 +23,7 @@ export default function MovieReviews() {
           ))}
         </ul>
       ) : (
-        <p>No reviews available.</p>
+        <p>We don't have any reviews for this movie.</p>
       )}
     </div>
   );
