@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, Link, Outlet, useNavigate } from "react-router-dom";
+import {
+  useParams,
+  Link,
+  Outlet,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import { fetchMovieDetails } from "../../Api";
 import styles from "./MovieDetailsPage.module.css";
 
@@ -7,13 +13,15 @@ export default function MovieDetailsPage() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
+  const backLinkHref = location.state?.from || "/movies";
 
   useEffect(() => {
     fetchMovieDetails(movieId).then(setMovie);
   }, [movieId]);
 
   const goBack = () => {
-    navigate(-1);
+    navigate(backLinkHref);
   };
 
   return (
@@ -32,10 +40,18 @@ export default function MovieDetailsPage() {
           <h1>{movie.title}</h1>
           <p>{movie.overview}</p>
           <div className={styles.linksContainer}>
-            <Link to="cast" className={styles.link}>
+            <Link
+              to="cast"
+              className={styles.link}
+              state={{ from: location.state?.from || "/" }}
+            >
               Cast
             </Link>
-            <Link to="reviews" className={styles.link}>
+            <Link
+              to="reviews"
+              className={styles.link}
+              state={{ from: location.state?.from || "/" }}
+            >
               Reviews
             </Link>
           </div>
